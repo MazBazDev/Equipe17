@@ -28,11 +28,16 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+
+    # MATCHES
     Route::get('/matches', [MatchesController::class, 'index'])
                     ->name('matches');
 
     Route::post('/matches/create', [MatchesController::class, 'create'])
                     ->name('matches.create');
+
+    Route::get('/matches/show/{id}', [MatchesController::class, 'showMatch'])
+                    ->name('matches.show');
 
 });
 

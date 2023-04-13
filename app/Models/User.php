@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function matches()
+    {
+        return $this->belongsToMany(Matches::class, 'user_matches')->withPivot('role');
+    }
 }

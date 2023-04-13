@@ -10,6 +10,10 @@ input, select, textarea{
     color: #696969;
 }
 
+h2 {
+  color:gray;
+}
+
 /* CSS */
 .button-toggle {
   appearance: button;
