@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MatchesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,4 +27,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/matches', [MatchesController::class, 'index'])
+                    ->name('matches');
+
+    Route::post('/matches/create', [MatchesController::class, 'create'])
+                    ->name('matches.create');
+
 });
+
+
