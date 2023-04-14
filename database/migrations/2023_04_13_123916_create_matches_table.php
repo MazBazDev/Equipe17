@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('matches', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->float('score');
+            $table->integer('scoreR');
+            $table->integer('scoreB');
             $table->string('gamemode');
             $table->string('state');
         });
