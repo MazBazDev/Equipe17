@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\MatchesController;
+use App\Http\Controllers\InviteTeam;
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
+use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +50,16 @@ Route::middleware([
 
     Route::get('/matches/show/{id}', [MatchesController::class, 'showMatch'])
                     ->name('matches.show');
+
+
+    Route::get('/invite/accept/{invite}/{token}', [InviteTeam::class, "accept"])->name('invite.accept');
+    Route::post('/invite/create/{team}', [InviteTeam::class, "create"])->name('invite.create');
+    
+    Route::get('/invites', [InviteTeam::class, "index"])->name('invite.index');
+    Route::delete('/invite/destroy/{invite}', [InviteTeam::class, "destroy"])->name('invite.destroy');
+    Route::get('/invite/show/{invite}', [InviteTeam::class, "show"])->name('invite.show');
+
+    Route::resource("stats", StatsController::class);
 
 });
 

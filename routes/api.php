@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\MatchsController;
+use App\Http\Controllers\UserMatchsController;
+use App\Models\Matchs;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
