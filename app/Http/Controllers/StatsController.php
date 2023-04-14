@@ -46,17 +46,19 @@ class StatsController extends Controller
         $totalLosses = 0;
 
         foreach ($data as $d) {
-            if ($d->side == 'RED') {
-                if ($d->scoreR > $d->scoreB) {
-                    $totalWins++;
+            if ($d->state == 2) {
+                if ($d->side == 'RED') {
+                    if ($d->scoreR > $d->scoreB) {
+                        $totalWins++;
+                    } else {
+                        $totalLosses++;
+                    }
                 } else {
-                    $totalLosses++;
-                }
-            } else {
-                if ($d->scoreB > $d->scoreR) {
-                    $totalWins++;
-                } else {
-                    $totalLosses++;
+                    if ($d->scoreB > $d->scoreR) {
+                        $totalWins++;
+                    } else {
+                        $totalLosses++;
+                    }
                 }
             }
         }
