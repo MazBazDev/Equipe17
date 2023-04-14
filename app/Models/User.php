@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','elo'
     ];
 
     /**
@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function matches()
+    {
+        return $this->belongsToMany(Matches::class, 'user_matches')->withPivot('role');
+    }
 }
