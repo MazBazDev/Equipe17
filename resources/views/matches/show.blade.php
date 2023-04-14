@@ -108,6 +108,8 @@
     @else
         <form id="form" method="post" action="{{ route('matches.join') }}">
             @csrf
+            <input id="team" name="team" value="" type="hidden">
+            <input id="user" name="user" value="{{$user->id}}" type="hidden">
             <input id="match" name="match" value="{{$match->id}}" type="hidden">
             <button class="popup flex justify-between" type="submit" onclick="document.getElementById('team').value='blue'">
                 🔵 Join Blue Team

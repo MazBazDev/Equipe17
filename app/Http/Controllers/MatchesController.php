@@ -23,7 +23,8 @@ class MatchesController extends Controller
     {
         $user = Auth::user();
         $match = Matches::create([
-            'score' => 0,
+            'scoreB' => 0,
+            'scoreR' => 0,
             'gamemode' => $request->gamemode,
             'state' => 0
         ]);
@@ -48,7 +49,7 @@ class MatchesController extends Controller
                 array_push($blueTeamUsers,User::find($um->user_id)); 
             }
         }
-        $qrcode = QrCode::size(200)->generate("http://localhost/matches/show/" . $id);
+        $qrcode = QrCode::size(200)->generate(route('matches.show', $id));
         return view('matches.show', compact("match","blueTeamUsers","user", "redTeamUsers", "qrcode"));
     }
 
@@ -76,7 +77,6 @@ class MatchesController extends Controller
                 $canAdd = false;
             }
         }
-
         if($canAdd){
             $userMatch = UserMatches::create([
                 'matches_id' => $request->match,
@@ -187,7 +187,8 @@ class MatchesController extends Controller
         }
 
         // TO modify
-        $match->score=10;
+        $match->scoreB=$request->scoreB;
+        $match->scoreR=$request->scoreR;
         $match->state=2;
         $match->save();
 
