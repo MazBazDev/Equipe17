@@ -111,4 +111,87 @@ class MatchesController extends Controller
         }
         return view('matches.detail', compact("match","blueTeamUsers","user", "redTeamUsers"));
     }
+
+    public function end(Request $request)
+    {
+        $gain = 12;
+        $lose = 12;
+        $winner = "";
+        $loser = "";
+        if($request->scoreB>$request->scoreR) {
+            $gain += ($request->scoreB - $request->scoreR);
+            $winner = "blue";
+            $loser = "red";
+        } else {
+            $gain += ($request->scoreR - $request->scoreB);
+            $winner = "red";
+            $loser = "blue";
+        }
+        $match = Matches::findOrFail($request->match);
+        $match->state=2;
+
+        $blueTeamUsers = [];
+        $redTeamUsers = [];
+
+        foreach(UserMatches::where('matches_id', $match->id)->get() as $um){
+            if($um->side == "red"){
+                array_push($redTeamUsers,User::find($um->user_id));
+            } else if($um->side == "blue"){
+                array_push($blueTeamUsers,User::find($um->user_id)); 
+            }
+        }
+
+        $bTeamElo = 0;
+        foreach($blueTeamUsers as $bUser) {
+            $bTeamElo+=$bUser->elo;
+        }
+
+        $rTeamElo = 0;
+        foreach($redTeamUsers as $rUser) {
+            $rTeamElo+=$rUser->elo;
+        }
+
+        if($rTeamElo>$bTeamElo) {
+            while($rTeamElo > $bTeamElo){
+                $gain+=5;
+                $rTeamElo = $rTeamElo / 10;
+            }
+        } else {
+            while($rTeamElo < $bTeamElo){
+                $gain+=5;
+                $bTeamElo = $bTeamElo / 10;
+            }
+        }
+
+        $lose = $gain-$lose;
+        if($loser == "red") {
+            foreach($blueTeamUsers as $bUser){
+                $bUser->elo+=$gain;
+                $bUser->save();
+            }
+
+            foreach($redTeamUsers as $rUser){
+                $rUser->elo-=$lose;
+                $rUser->save();
+            }
+        } else {
+            foreach($blueTeamUsers as $bUser){
+                $bUser->elo-=$lose;
+                $bUser->save();
+            }
+
+            foreach($redTeamUsers as $rUser){
+                $rUser->elo+=$gain;
+                $rUser->save();
+            }
+        }
+
+        // TO modify
+        $match->score=10;
+        $match->state=2;
+        $match->save();
+
+        return redirect()
+                        ->route('dashboard');
+    }
 }

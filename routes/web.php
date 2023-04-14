@@ -42,6 +42,9 @@ Route::middleware([
     Route::post('/matches/detail', [MatchesController::class, 'detail'])
                     ->name('matches.detail');
 
+    Route::post('/matches/end', [MatchesController::class, 'end'])
+                    ->name('matches.end');
+
     Route::get('/matches/show/{id}', [MatchesController::class, 'showMatch'])
                     ->name('matches.show');
 
