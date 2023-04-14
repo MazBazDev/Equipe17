@@ -40,7 +40,9 @@ class StatsController extends Controller
             ->join('matches', 'user_matches.matches_id', '=', 'matches.id')
             ->get();
 
-        $totalMatches = $data->count();
+        if ($data->state == 2) {
+            $totalMatches = $data->count();
+        }
 
         $totalWins = 0;
         $totalLosses = 0;
