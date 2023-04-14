@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\MatchsController;
+use App\Http\Controllers\StatsController;
+use App\Http\Controllers\UserMatchsController;
+use App\Models\Matchs;
 use Illuminate\Support\Facades\Route;
+use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +31,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::resource("stats", StatsController::class);
+
+Route::resource("matchs", MatchsController::class);
+Route::resource("usermatchs", UserMatchsController::class);
