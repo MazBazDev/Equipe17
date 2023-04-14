@@ -1,80 +1,43 @@
 <div>
-    @if (Gate::check('addTeamMember', $team))
-        <x-section-border />
-
-        <!-- Add Team Member -->
-        <div class="mt-10 sm:mt-0">
-            <x-form-section submit="addTeamMember">
-                <x-slot name="title">
-                    {{ __('Add Team Member') }}
-                </x-slot>
-
-                <x-slot name="description">
-                    {{ __('Add a new team member to your team, allowing them to collaborate with you.') }}
-                </x-slot>
-
-                <x-slot name="form">
-                    <div class="col-span-6">
-                        <div class="max-w-xl text-sm text-gray-600 dark:text-gray-400">
-                            {{ __('Please provide the email address of the person you would like to add to this team.') }}
-                        </div>
-                    </div>
-
-                    <!-- Member Email -->
-                    <div class="col-span-6 sm:col-span-4">
-                        <x-label for="email" value="{{ __('Email') }}" />
-                        <x-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="addTeamMemberForm.email" />
-                        <x-input-error for="email" class="mt-2" />
-                    </div>
-
-                    <!-- Role -->
-                    @if (count($this->roles) > 0)
-                        <div class="col-span-6 lg:col-span-4">
-                            <x-label for="role" value="{{ __('Role') }}" />
-                            <x-input-error for="role" class="mt-2" />
-
-                            <div class="relative z-0 mt-1 border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer">
-                                @foreach ($this->roles as $index => $role)
-                                    <button type="button" class="relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-600 {{ $index > 0 ? 'border-t border-gray-200 dark:border-gray-700 focus:border-none rounded-t-none' : '' }} {{ ! $loop->last ? 'rounded-b-none' : '' }}"
-                                                    wire:click="$set('addTeamMemberForm.role', '{{ $role->key }}')">
-                                        <div class="{{ isset($addTeamMemberForm['role']) && $addTeamMemberForm['role'] !== $role->key ? 'opacity-50' : '' }}">
-                                            <!-- Role Name -->
-                                            <div class="flex items-center">
-                                                <div class="text-sm text-gray-600 dark:text-gray-400 {{ $addTeamMemberForm['role'] == $role->key ? 'font-semibold' : '' }}">
-                                                    {{ $role->name }}
-                                                </div>
-
-                                                @if ($addTeamMemberForm['role'] == $role->key)
-                                                    <svg class="ml-2 h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                    </svg>
-                                                @endif
-                                            </div>
-
-                                            <!-- Role Description -->
-                                            <div class="mt-2 text-xs text-gray-600 dark:text-gray-400 text-left">
-                                                {{ $role->description }}
-                                            </div>
-                                        </div>
-                                    </button>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                </x-slot>
-
-                <x-slot name="actions">
-                    <x-action-message class="mr-3" on="saved">
-                        {{ __('Added.') }}
-                    </x-action-message>
-
-                    <x-button>
-                        {{ __('Add') }}
-                    </x-button>
-                </x-slot>
-            </x-form-section>
+    <div class="md:grid md:grid-cols-3 md:gap-6">
+        <div class="md:col-span-1 flex justify-between">
+            <div class="px-4 sm:px-0">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Invitation link</h3>
+        
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    Create an invitation link
+                </p>
+            </div>
+        
+            <div class="px-4 sm:px-0">
+                
+            </div>
         </div>
-    @endif
+    
+        <div class="mt-5 md:mt-0 md:col-span-2">
+                @if ($team->personal_team && count($this->roles) > 0)
+                <div class="col-span-6 lg:col-span-4 px-4 py-5 bg-white dark:bg-gray-800 sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md mt-5">
+                    <form action="{{ route('invite.create', $team) }}" method="post">
+                        @csrf
+            
+                        <x-label for="role" value="{{ __('Role') }}" />
+                        <x-input-error for="role" class="mt-2" />
+                        
+                        <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          @foreach ($this->roles as $index => $role)
+                          <option value="{{ $role->key }}">{{ $role->name }}</option>
+                          @endforeach
+                        </select>
+                        
+                        <div class="mt-6">
+                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">Create link</button>
+                        </div>
+                    </form>
+                </div>
+                @endif
+        </div>
+    </div>
+
 
     @if ($team->teamInvitations->isNotEmpty() && Gate::check('addTeamMember', $team))
         <x-section-border />
