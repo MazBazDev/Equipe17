@@ -4,7 +4,6 @@ use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\InviteTeam;
 use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
-use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 /*
 |--------------------------------------------------------------------------
