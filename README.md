@@ -8,7 +8,7 @@ Welcome to Equipe17, a web application that allows you to organize foosball matc
 
 ## Installation
 
-    1. Clone the repository `git clone https://github.com/your_name/equipe17.git`
+    1. Clone the repository `git clone https://github.com/MazBazDev/Equipe17.git`
     2. Navigate to the project directory `cd equipe17`
     3. Install PHP dependencies `composer install`
     4. Copy the .env.example file to .env `cp .env.example .env`
@@ -37,4 +37,13 @@ Welcome to Equipe17, a web application that allows you to organize foosball matc
 
 ## Author
 
-This application was developed by [your_name] during the 48-hour challenge organized by Ynov Campus.
+This application was developed during the Ynov Campus 48-hour challenge 2023 by:
+- [@EoghanYnov](https://github.com/EoghanYnov)
+- [@jeinero](https://github.com/jeinero)
+- [@jadecb](https://github.com/jadecb)
+- [@Lucas-Barthelemy](https://github.com/Lucas-Barthelemy)
+- [@MazBazDev](https://github.com/MazBazDev)
+- [@Mlecherf](https://github.com/Mlecherf)
+- [@0Nolan0](https://github.com/0Nolan0)
+
+
