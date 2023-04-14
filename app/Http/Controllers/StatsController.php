@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Matchs;
-use App\Models\UserMatchs;
+use App\Models\UserMatches;
 
 class StatsController extends Controller
 {
@@ -35,10 +34,10 @@ class StatsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $player_id)
+    public function show(string $user_id)
     {
-        $data = UserMatchs::where('player_id', $player_id)
-            ->join('matchs', 'user_match.match_id', '=', 'matchs.id')
+        $data = UserMatches::where('user_id', $user_id)
+            ->join('matches', 'user_matches.matches_id', '=', 'matches.id')
             ->get();
 
         $totalMatches = $data->count();
