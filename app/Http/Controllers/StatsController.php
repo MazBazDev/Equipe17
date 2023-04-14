@@ -39,16 +39,14 @@ class StatsController extends Controller
         $data = UserMatches::where('user_id', $user_id)
             ->join('matches', 'user_matches.matches_id', '=', 'matches.id')
             ->get();
-
-        if ($data->state == 2) {
-            $totalMatches = $data->count();
-        }
-
+       
+        $totalMatches = 0;
         $totalWins = 0;
         $totalLosses = 0;
 
         foreach ($data as $d) {
             if ($d->state == 2) {
+                $totalMatches += 1;
                 if ($d->side == 'RED') {
                     if ($d->scoreR > $d->scoreB) {
                         $totalWins++;
