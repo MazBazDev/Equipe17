@@ -1,8 +1,10 @@
+<x-app-layout>
+
 <!-- app.stats.blade.php -->
 
-<p>Total games played: {{ $totalMatches }}</p>
-<p>Wins: {{ $totalWins }} ({{ $winRate }}%)</p>
-<p>Losses: {{ $totalLosses }} ({{ $lossRate }}%)</p>
+<h2>Total games played: {{ $totalMatches }}</h2>
+<h2>Wins: {{ $totalWins }} ({{ $winRate }}%)</h2>
+<h2>Losses: {{ $totalLosses }} ({{ $lossRate }}%)</h2>
 
 {{-- <table>
     <thead>
@@ -32,3 +34,5 @@
         @endforeach
     </tbody>
 </table> --}}
+
+</x-app-layout>

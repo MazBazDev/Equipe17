@@ -18,6 +18,9 @@
                     <x-nav-link href="{{ route('matches') }}" :active="request()->routeIs('matches')">
                         {{ __('Matches') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('stats.show',Auth::user()->id) }}" :active="request()->routeIs('stats')">
+                        {{ __('My Stats') }}
+                    </x-nav-link>
                 </div>
             </div>
 
