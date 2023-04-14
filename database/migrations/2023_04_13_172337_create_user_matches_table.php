@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(Matches::class);
             $table->foreignIdFor(User::class);
             $table->string('role');
+            $table->string('side')->default("none");
             $table->timestamps();
         });
     }

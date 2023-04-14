@@ -36,6 +36,12 @@ Route::middleware([
     Route::post('/matches/create', [MatchesController::class, 'create'])
                     ->name('matches.create');
 
+    Route::post('/matches/join', [MatchesController::class, 'join'])
+                    ->name('matches.join');
+
+    Route::post('/matches/detail', [MatchesController::class, 'detail'])
+                    ->name('matches.detail');
+
     Route::get('/matches/show/{id}', [MatchesController::class, 'showMatch'])
                     ->name('matches.show');
 
