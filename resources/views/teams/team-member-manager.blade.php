@@ -1,4 +1,5 @@
 <div>
+    @if (Auth::user()->hasTeamPermission($team, "create_invite"))
     <div class="md:grid md:grid-cols-3 md:gap-6">
         <div class="md:col-span-1 flex justify-between">
             <div class="px-4 sm:px-0">
@@ -13,30 +14,19 @@
                 
             </div>
         </div>
-    
         <div class="mt-5 md:mt-0 md:col-span-2">
-                @if ($team->personal_team && count($this->roles) > 0)
                 <div class="col-span-6 lg:col-span-4 px-4 py-5 bg-white dark:bg-gray-800 sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md mt-5">
                     <form action="{{ route('invite.create', $team) }}" method="post">
                         @csrf
-            
-                        <x-label for="role" value="{{ __('Role') }}" />
-                        <x-input-error for="role" class="mt-2" />
-                        
-                        <select name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          @foreach ($this->roles as $index => $role)
-                          <option value="{{ $role->key }}">{{ $role->name }}</option>
-                          @endforeach
-                        </select>
                         
                         <div class="mt-6">
-                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">Create link</button>
+                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">Create / View link</button>
                         </div>
                     </form>
                 </div>
-                @endif
         </div>
     </div>
+    @endif
 
 
     @if ($team->teamInvitations->isNotEmpty() && Gate::check('addTeamMember', $team))

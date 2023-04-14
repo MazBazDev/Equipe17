@@ -55,7 +55,7 @@ class InviteTeam extends Controller
         $invite = Invite::create([
             "team_id" => $team->id,
             "token" => Str::random(32),
-            "role" => $request->role,
+            "role" => "member",
         ]);
 
         return redirect()->route("invite.show", $invite);
