@@ -59,7 +59,6 @@ Route::middleware([
     Route::get('/invite/show/{invite}', [InviteTeam::class, "show"])->name('invite.show');
 
     Route::resource("stats", StatsController::class);
-
 });
 
 
