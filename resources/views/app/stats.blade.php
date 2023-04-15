@@ -64,30 +64,48 @@
             </div>
         </div>
     </div>
-    <h1>Overall Stats</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Win Rate</th>
-                <th>Total Matches</th>
-                <th>Total Wins</th>
-                <th>Total Losses</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($userStats as $index => $user)
-                <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ $user['name'] }}</td>
-                    <td>{{ $user['win_rate'] }}%</td>
-                    <td>{{ $user['total_matches'] }}</td>
-                    <td>{{ $user['total_wins'] }}</td>
-                    <td>{{ $user['total_losses'] }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="flex justify-center mt-8" style="color: #ffffff">
+        <div class="text-center">
+            <h1 class="text-2xl">Classement</h1>
+            <hr class="mt-5">
+            <div class="flex flex-col mt-5">
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                        <div class="overflow-hidden">
+                            <table class="min-w-full text-center">
+                                <thead class="border-b">
+                                    <tr>
+                                        <th scope="col" class="text-sm font-medium px-6 py-4">Rank</th>
+                                        <th scope="col" class="text-sm font-medium px-6 py-4">Name</th>
+                                        <th scope="col" class="text-sm font-medium px-6 py-4">Win Rate</th>
+                                        <th scope="col" class="text-sm font-medium px-6 py-4">Total Matches</th>
+                                        <th scope="col" class="text-sm font-medium px-6 py-4">Total Wins</th>
+                                        <th scope="col" class="text-sm font-medium px-6 py-4">Total Losses</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($userStats as $index => $user)
+                                        <tr class="border-b text-gray-100">
+                                            <td class="text-sm text-gray-100 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $index + 1 }}</td>
+                                            <td class="text-sm text-gray-100 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $user['name'] }}</td>
+                                            <td class="text-sm text-gray-100 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $user['win_rate'] }}%</td>
+                                            <td class="text-sm text-gray-100 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $user['total_matches'] }}</td>
+                                            <td class="text-sm text-gray-100 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $user['total_wins'] }}</td>
+                                            <td class="text-sm text-gray-100 font-light px-6 py-4 whitespace-nowrap">
+                                                {{ $user['total_losses'] }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>
