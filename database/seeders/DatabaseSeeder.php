@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
         
-        for ($i=1; $i < 5001; $i++) {
+        for ($i=1; $i < 201; $i++) {
             $chance = $faker->numberBetween(0, 1000);
 
             \App\Models\Matches::create([
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for ($i=1; $i < 5001; $i++) {
+        for ($i=1; $i < 201; $i++) {
             $userIdR = $faker->numberBetween(1, 10);
             $userIdB = $userIdR;
 
@@ -68,6 +68,5 @@ class DatabaseSeeder extends Seeder
                 'side' => 'blue',
             ]);
         }
-
     }
 }
