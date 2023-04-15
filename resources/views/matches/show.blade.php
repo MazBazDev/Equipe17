@@ -32,26 +32,37 @@
         <form method="post" action="{{ route('matches.detail') }}">
             @csrf
             <input id="match" name="match" value="{{$match->id}}" type="hidden">
-            <div class="flex justify-between">
+            <div class="flex justify-evenly">
                 <x-guest-layout>
-                    <div class="">
-                        <h1>
-                            Red Side Players :
-                        </h1> 
-                        @foreach($redTeamUsers as $redUser)
-                            <x-input value="➖ {{$redUser->name}}" disabled>
-                            </x-input>
-                        @endforeach
+                    <div class="grid grid-cols-25 w-full">
+                        <table class="min-w-full text-center">
+                            <thead class="border-b">
+                                <tr>
+                                    <th scope="col" class="text-sm font-medium px-6 py-4">  Red Side Players </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($redTeamUsers as $redUser)
+                                    <tr class="border-b text-gray-100">
+                                        <td class="text-sm text-gray-100 font-light px-6 py-4 whitespace-nowrap">
+                                            <x-input value="➖ {{$redUser->name}}" disabled></x-input>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </x-guest-layout>
                 <x-guest-layout>
-                    <div class="d-flex flex-column justify-content-center">
+                    <div class="flex-column pt-2 justify-center">
                         <div class="rounded p-3 mx-5 bg-white">
-                            {{ $qrcode }}
+                            <div class="flex justify-center">
+                                {{ $qrcode }}
+                            </div>
                         </div>
                        
-                        <div class="d-flex flex-column">
-                            <div class="d-flex flex-row justify-content-center pt-2 pb-3 mx-5">
+                        <div class="flex-column justify-center">
+                            <div class="flex justify-center pt-2 pb-3 mx-5">
                                 <h1 class="p-1">
                                     Gamemode :
                                 </h1> 
@@ -60,7 +71,7 @@
                                 </h2>
                             </div>
     
-                            <div class="d-flex flex-row justify-content-center pt-2 pb-3 mx-5">
+                            <div class="flex justify-center pt-2 pb-3 mx-5">
                                 <h1  class="p-1">
                                     State of the match :
                                 </h1>
@@ -81,16 +92,16 @@
                             </div>
                         </div>
 
-                        <div class="d-flex flex-row justify-content-center">
+                        <div class="flex justify-center">
                             @if (count($blueTeamUsers) > 0 && count($redTeamUsers) > 0 )
                                 <x-guest-layout>
-                                    <button type="submit" class="btn btn-outline-danger" >
+                                    <button type="submit" class="mt-5 inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                         Start
                                     </button>
                                 </x-guest-layout>
                             @else
                                 <x-guest-layout>
-                                    <button type="submit" class="btn btn-outline-danger" disabled>
+                                    <button type="submit" class="mt-5 inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150" disabled>
                                         Start
                                     </button>
                                 </x-guest-layout>
@@ -101,13 +112,22 @@
                 
                 <x-guest-layout>
                     <div class="grid grid-cols-25 w-full">
-                        <h1>
-                            Blue Side Players :
-                        </h1> 
-                        @foreach($blueTeamUsers as $blueUser)
-                            <x-input value="➖ {{$blueUser->name}}" disabled>
-                            </x-input>
-                        @endforeach
+                        <table class="min-w-full text-center">
+                            <thead class="border-b">
+                                <tr>
+                                    <th scope="col" class="text-sm font-medium px-6 py-4"> Blue Side Players </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($blueTeamUsers as $blueUser)
+                                    <tr class="border-b text-gray-100">
+                                        <td class="text-sm text-gray-100 font-light px-6 py-4 whitespace-nowrap">
+                                            <x-input value="➖ {{$blueUser->name}}" disabled></x-input>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </x-guest-layout>
             </div>
