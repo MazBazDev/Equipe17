@@ -34,7 +34,7 @@
             <input id="match" name="match" value="{{$match->id}}" type="hidden">
             <div class="flex justify-between">
                 <x-guest-layout>
-                    <div class="grid grid-cols-25 w-full">
+                    <div class="">
                         <h1>
                             Red Side Players :
                         </h1> 
@@ -45,33 +45,57 @@
                     </div>
                 </x-guest-layout>
                 <x-guest-layout>
-                    {{ $qrcode }}
-                    <div class="grid grid-cols-25 w-full" style="margin: 0 auto;
-                    width: 100px;">
-                        <h1>
-                            Gamemode :
-                        </h1> 
-                        <h2>
-                            {{$match->gamemode}}
-                        </h2>
-                        <br><br>
-                        <h1>
-                            State of the match :
-                        </h1>
-                        <h2>
-                            @switch($match->state)
-                                @case(0)
-                                    Waiting... ⏳
-                                    @break
-                                @case(1)
-                                    Started ! 🎈
-                                    @break
-                            
-                                @case(2)
-                                    Done. ✅
-                                    @break
-                            @endswitch
-                        </h2>
+                    <div class="d-flex flex-column justify-content-center">
+                        <div class="rounded p-3 mx-5 bg-white">
+                            {{ $qrcode }}
+                        </div>
+                       
+                        <div class="d-flex flex-column">
+                            <div class="d-flex flex-row justify-content-center pt-2 pb-3 mx-5">
+                                <h1 class="p-1">
+                                    Gamemode :
+                                </h1> 
+                                <h2 class="p-1">
+                                    {{$match->gamemode}}
+                                </h2>
+                            </div>
+    
+                            <div class="d-flex flex-row justify-content-center pt-2 pb-3 mx-5">
+                                <h1  class="p-1">
+                                    State of the match :
+                                </h1>
+                                <h2 class="p-1">
+                                    @switch($match->state)
+                                        @case(0)
+                                            Waiting... ⏳
+                                            @break
+                                        @case(1)
+                                            Started ! 🎈
+                                            @break
+                                    
+                                        @case(2)
+                                            Done. ✅
+                                            @break
+                                    @endswitch
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row justify-content-center">
+                            @if (count($blueTeamUsers) > 0 && count($redTeamUsers) > 0 )
+                                <x-guest-layout>
+                                    <button type="submit" class="btn btn-outline-danger" >
+                                        Start
+                                    </button>
+                                </x-guest-layout>
+                            @else
+                                <x-guest-layout>
+                                    <button type="submit" class="btn btn-outline-danger" disabled>
+                                        Start
+                                    </button>
+                                </x-guest-layout>
+                            @endif
+                        </div>
                     </div>
                 </x-guest-layout>
                 
@@ -86,23 +110,6 @@
                         @endforeach
                     </div>
                 </x-guest-layout>
-            </div>
-            <div style="margin: 0 auto;
-            width: 110px;">
-            @if (count($blueTeamUsers) > 0 && count($redTeamUsers) > 0 )
-                <x-guest-layout>
-                    <button type="submit" class="button-85-valid" >
-                        Start
-                    </button>
-                </x-guest-layout>
-            @else
-                <x-guest-layout>
-                    <button type="submit" class="button-85-invalid" disabled>
-                        Start
-                    </button>
-                </x-guest-layout>
-            @endif
-                
             </div>
         </form>
     @else
