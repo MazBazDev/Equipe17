@@ -114,7 +114,7 @@
         <!-- [EDIT] PRESENTATION ETUDIANT 3 -->
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card">
-          <img src="https://cdn.discordapp.com/attachments/1095995508343980105/1096634877312499833/image0.jpg" class="card-img-top" alt="Mathis">
+          <img src="https://cdn.discordapp.com/attachments/1095995508343980105/1096643890016174150/1669023774089.png" class="card-img-top" alt="Mathis">
             <div class="card-body">
               <h5 class="card-title">YLECHERF Mathis</h5>
               <p class="card-text">J'ai effectuées toute la partie qui concerne le déroulement d'un match,<br>
@@ -122,11 +122,22 @@
             </div>
           </div>
         </div>
-
+        <!-- [EDIT] PRESENTATION ETUDIANT 7 -->
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+          <div class="card">
+          <img src="https://cdn.discordapp.com/attachments/1095995508343980105/1096634877312499833/image0.jpg" class="card-img-top" alt="Etudiant 1">
+            <div class="card-body">
+              <h5 class="card-title">YBARTHELEMY Lucas</h5>
+              <p class="card-text">En charge de l'élaboration du design avec Figma, j'ai ensuite établie le code Html,<br>
+                  participé à la conception du cahier des charges,. 
+              </p>
+            </div>
+          </div>
+        </div>
         <!-- [EDIT] PRESENTATION ETUDIANT 4 -->
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card">
-          <img src="lorem-ipsum.jpg" class="card-img-top" alt="Eoghan">
+          <img src="https://cdn.discordapp.com/attachments/1095995508343980105/1096644601995075584/Uppercase_letter_Y.png" class="card-img-top" alt="Eoghan">
             <div class="card-body">
               <h5 class="card-title">YMARCONI Eoghan</h5>
               <p class="card-text">Ici, je décris mon rôle et les tâches que j'ai effectuées</p>
@@ -137,7 +148,7 @@
         <!-- [EDIT] PRESENTATION ETUDIANT 5 -->
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card">
-          <img src="{{ asset('/home/HTML.jpg') }}" class="card-img-top" alt="Etudiant 1">
+          <img src="https://cdn.discordapp.com/attachments/1095995508343980105/1096643407591518348/1581698796719.png" class="card-img-top" alt="Etudiant 1">
             <div class="card-body">
               <h5 class="card-title">YBIYAMOU Jade</h5>
               <p class="card-text">J'ai eu pour role d'établir le design des pages avec une partie du groupe,<br>
@@ -149,7 +160,7 @@
         <!-- [EDIT] PRESENTATION ETUDIANT 6 -->
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
           <div class="card">
-          <img src="{{ asset("home/IOT.jpg") }}" class="card-img-top" alt="Etudiant 1">
+          <img src="https://cdn.discordapp.com/attachments/1095995508343980105/1096644179121164308/1656920714229.png" class="card-img-top" alt="Etudiant 1">
             <div class="card-body">
               <h5 class="card-title">YLOSSIGNOL-DRILLIEN Nolan</h5>
               <p class="card-text">En ce qui me concerne j'ai participé a l'élaboration du design avec une partie du groupe.<br>
@@ -158,18 +169,7 @@
           </div>
         </div>
 
-         <!-- [EDIT] PRESENTATION ETUDIANT 7 -->
-         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card">
-            <img src="{{ asset("home/lorem-ipsum.jpg") }}" class="card-img-top" alt="Etudiant 1">
-              <div class="card-body">
-                <h5 class="card-title">YBARTHELEMY Lucas</h5>
-                <p class="card-text">En charge de l'élaboration du design avec Figma, j'ai ensuite établie le code Html,<br>
-                    participé à la conception du cahier des charges,. 
-                </p>
-              </div>
-            </div>
-          </div>
+        
       </div>
 
       <div id="visuels" class="col-lg-12 text-center mb-5">
@@ -185,21 +185,21 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="lorem-ipsum.jpg" class="d-block w-100" alt="screenshot1">
+            <img src="https://cdn.discordapp.com/attachments/1095995508343980105/1096644740402913312/image.png" class="d-block w-100" alt="screenshot1">
             <div class="carousel-caption d-none d-md-block">
               <h3>Screenshot n°1</h3>
               <p>Légende screenshot n°1</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="lorem-ipsum.jpg" class="d-block w-100" alt="screenshot2">
+            <img src="https://cdn.discordapp.com/attachments/1095995508343980105/1096644609549021388/image.png" class="d-block w-100" alt="screenshot2">
             <div class="carousel-caption d-none d-md-block">
               <h3>Screenshot n°2</h3>
               <p>Légende screenshot n°2</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="lorem-ipsum.jpg" class="d-block w-100" alt="screenshot3">
+            <img src="https://cdn.discordapp.com/attachments/1095995508343980105/1096644837962420325/image.png" class="d-block w-100" alt="screenshot3">
             <div class="carousel-caption d-none d-md-block">
               <h3>Screenshot n°3</h3>
               <p>Légende screenshot n°3</p>
