@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Share this invitation to allow members to join your team
-        </h2>
-    </x-slot>
-
     <div>
         <div class="max-w-xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="px-4 py-5 bg-white dark:bg-gray-800 sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md mt-5 font-semibold text-xl text-gray-800 dark:text-gray-200 text-center rounded-lg shadow-lg p-10 max-w-xs">
