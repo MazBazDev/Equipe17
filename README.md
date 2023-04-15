@@ -35,6 +35,9 @@ Welcome to Equipe17, a web application that allows you to organize foosball matc
 - Alpine.js
 - MySQL
 
+## Arduino
+    Dossier arduino pour voir le code arduino
+    
 ## Author
 
 This application was developed during the Ynov Campus 48-hour challenge 2023 by:
