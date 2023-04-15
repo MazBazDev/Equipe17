@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
             \App\Models\User::factory()->create([
                 'name' => $user["name"],
                 'email' => $user["email"],
-                'password' => bcrypt('password')
+                'password' => bcrypt('password'),
+                'elo' =>  $faker->numberBetween(0, 2800)
             ]);
         }
         
